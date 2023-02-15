@@ -14,14 +14,15 @@ export default function Home() {
             <Router>
                 <Navbar />
                 <Routes>
-                    <Route eaxt path="/" element={<News category="General" country="in" />} />
-                    <Route eaxt path="/business" element={<News category="business" country="in" />} />
-                    <Route eaxt path="/entertainment" element={<News category="entertainment" country="in" />} />
-                    <Route eaxt path="/everything" element={<News category="everything" country="in" />} />
-                    <Route eaxt path="/health" element={<News category="health" country="in" />} />
-                    <Route eaxt path="/science" element={<News category="science" country="in" />} />
-                    <Route eaxt path="/sports" element={<News category="sports" country="in" />} />
-                    <Route eaxt path="/technology" element={<News category="technology" country="in" />} />
+                    <Route exact path="/" element={<News category="General" country="in" />} />
+                    <Route exact path="/business" element={<News category="business" country="in" />} />
+                    <Route exact path="/entertainment" element={<News category="entertainment" country="in" />} />
+                    <Route exact path="/everything" element={<News category="everything" country="in" />} />
+                    <Route exact path="/health" element={<News category="health" country="in" />} />
+                    <Route exact path="/science" element={<News category="science" country="in" />} />
+                    <Route exact path="/sports" element={<News category="sports" country="in" />} />
+                    <Route exact path="/technology" element={<News category="technology" country="in" />} />
+                    <Route exact path='/saved' element={<News category="saved" country="in" />} />
                 </Routes>
             </Router>
         </div>
