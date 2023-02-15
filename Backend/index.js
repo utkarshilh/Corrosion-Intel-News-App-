@@ -9,6 +9,8 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 
+const { parseISO, format } = require('date-fns');
+
 
 const db = mysql.createPool({
     host: "localhost",
@@ -41,9 +43,13 @@ app.post('/api/save', (req, res) => {
 
     const author = req.body.author;
 
-    const savequery = "insert into savednews(title,imgUrl, readMoreUrl, author, description) VALUES(?,?,?,?,?);";
+    const date = format(parseISO(req.body.date), 'yyyy-MM-dd HH:mm:ss');
+    console.log(date)
 
-    db.query(savequery, [title, imgUrl, readMoreUrl, author, description], (err, result) => {
+
+    const savequery = "insert into savednews(title,imgUrl, readMoreUrl, author, description,date) VALUES(?,?,?,?,?,?);";
+
+    db.query(savequery, [title, imgUrl, readMoreUrl, author, description, date], (err, result) => {
         if (err) {
             const errStatus = {
                 code: 404,
@@ -62,7 +68,28 @@ app.post('/api/save', (req, res) => {
         }
 
     })
+})
 
+//getting all the saved  news from the database
 
+app.get('/api/getnews', (req, res) => {
+    const getNewsQuery = "select * from savedNews"
+    db.query(getNewsQuery, (err, result) => {
+        if (err) {
+
+            console.log(err);
+
+        }
+
+        else {
+            temp = {
+                articles: result
+            }
+            console.log(temp);
+
+            res.send(temp);
+
+        }
+    })
 
 })

@@ -15,6 +15,7 @@ export default function NewsItem(props) {
     let title;
     let description;
     let author;
+    let date
     const handleButtonClick = () => {
         // Update the variable state first
         updateVariableState()
@@ -25,7 +26,8 @@ export default function NewsItem(props) {
                     title: title,
                     description: description,
                     url: url,
-                    author: author
+                    author: author,
+                    date: date
 
                 }).then((props) => {
 
@@ -53,6 +55,8 @@ export default function NewsItem(props) {
                 description = props.description;
                 url = props.url;
                 author = props.author;
+                date = props.date;
+
 
                 // Resolve the promise to indicate that the variable state update is complete
                 resolve();
@@ -70,7 +74,8 @@ export default function NewsItem(props) {
                     <h5 className="card-title">{props.title}</h5>
                     <p className="card-text">{props.description ? props.description : "Description not present please press ReadMore to jump to the main page"}</p>
                     <p className="card-text"> <small className="text-muted">By {props.author ? props.author : "Unknown"} on {new Date(props.date).toGMTString()}</small> </p>
-                    <a className="btn btn-primary mx-3" onClick={handleButtonClick}>Save</a>
+
+                    {props.gh && <a className="btn btn-primary mx-3" onClick={handleButtonClick}>Save</a>}
                     {/* <button className='btn btn-primary' onClick={save}> click here</button> */}
                     <a href={props.url} target="_blank" className="btn btn-primary">Read More</a>
 
