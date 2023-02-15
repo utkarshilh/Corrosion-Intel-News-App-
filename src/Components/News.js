@@ -29,10 +29,14 @@ export default function News(props) {
             tt = true;
 
         }
-        else if (props.category == "everything")
+        else if (props.category == "everything") {
             url = "https://newsapi.org/v2/everything?q=Apple&from=2023-02-14&sortBy=popularity&apiKey=42ddb4056aeb4d4ab37062f04002f663"
-        else
+            tt = false;
+        }
+        else {
             url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=42ddb4056aeb4d4ab37062f04002f663`;
+            tt = false;
+        }
         Axios.get(url).then(
             (response) => {
                 console.log(response.data.articles.urlToImage)
@@ -46,7 +50,7 @@ export default function News(props) {
     return (
         <div className="container my-3">
 
-            <h1>News App</h1>
+            <h1>Top Headline </h1>
             <div className="row">
                 {news.map((val) => {
                     console.log(val);
