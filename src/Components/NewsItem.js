@@ -9,6 +9,7 @@ import Axios from 'axios';
 
 
 export default function NewsItem(props) {
+    console.log("news item's props" + JSON.stringify(props.ss))
 
     let url;
     let imgUrl;
@@ -75,8 +76,9 @@ export default function NewsItem(props) {
                     <p className="card-text">{props.description ? props.description : "Description not present please press ReadMore to jump to the main page"}</p>
                     <p className="card-text"> <small className="text-muted">By {props.author ? props.author : "Unknown"} on {new Date(props.date).toGMTString()}</small> </p>
 
-                    <a className="btn btn-primary mx-3" onClick={handleButtonClick} >Save</a>
+                    {(props.ss != "saved") && <a className="btn btn-primary mx-3" onClick={handleButtonClick} >Save</a>}
                     {/* <button className='btn btn-primary' onClick={save}> click here</button> */}
+
                     <a href={props.url} target="_blank" className="btn btn-primary">Read More</a>
 
                 </div>

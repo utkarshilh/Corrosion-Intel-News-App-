@@ -22,7 +22,7 @@ export default function Home() {
                     <Route exact path="/science" element={<News category="science" country="in" />} />
                     <Route exact path="/sports" element={<News category="sports" country="in" />} />
                     <Route exact path="/technology" element={<News category="technology" country="in" />} />
-                    <Route exact path='/saved' element={<News category="saved" country="in" />} />
+                    <Route exact path='/saved' element={<News category="saved" country="in" ss="saved" />} />
                 </Routes>
             </Router>
         </div>

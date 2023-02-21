@@ -11,6 +11,9 @@ import NewsItem from "./NewsItem";
 
 export default function News(props) {
 
+    console.log("props :" + JSON.stringify(props));
+
+
     let tt = false;
 
 
@@ -20,7 +23,6 @@ export default function News(props) {
 
 
     useEffect(() => {
-        console.log("i was executed")
 
         var url;
 
@@ -39,8 +41,6 @@ export default function News(props) {
         }
         Axios.get(url).then(
             (response) => {
-                console.log(response.data.articles.urlToImage)
-
                 setNews(response.data.articles);
 
             }
@@ -53,11 +53,11 @@ export default function News(props) {
             <h1>Top Headline </h1>
             <div className="row">
                 {news.map((val) => {
-                    console.log(val);
+
                     return (
                         <div className="col-md-4" key={val.url} >
 
-                            <NewsItem title={val.title} image={val.urlToImage || val.imgUrl} description={(val.description ? val.description.slice(0, 35) : "")} author={val.author} date={val.publishedAt} url={val.url || val.readMoreUrl} gh={tt} />
+                            <NewsItem title={val.title} image={val.urlToImage || val.imgUrl} description={(val.description ? val.description.slice(0, 35) : "")} author={val.author} date={val.publishedAt} url={val.url || val.readMoreUrl} gh={tt} ss={props.ss} />
                         </div>
 
                     )

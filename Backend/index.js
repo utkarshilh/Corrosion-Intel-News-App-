@@ -93,3 +93,10 @@ app.get('/api/getnews', (req, res) => {
     })
 
 })
+
+
+// deleting the current news 
+app.delete("/api/delete", (req, res) => {
+    console.log(" i was clicked")
+    console.log(req)
+})
